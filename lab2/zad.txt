@@ -1,0 +1,51 @@
+zad Obowi¹zkowe!
+
+Dany jest interfejs (kontrakt), który jest czêœci¹ oprogramowania pewnej gry dla dzieci.
+Interfejs nale¿y zaimplementowaæ a nastêpnie przetestowaæ jednostkowo przy u¿yciu JUnit.
+
+public interface Psikus {
+   Integer cyfrokrad(Integer liczba);
+   Integer hultajchochla(Integer liczba) throws NieduanyPsikusException;
+   Integer nieksztaltek(Integer liczba);
+}
+
+public class NieudanyPsikusException extends Exception {};
+
+Kontrakt (specyfikacja) metod:
+1. Metoda cyfrokrad dzia³a w ten sposób, ¿e w liczbie przekazanej jako argument usuwa losowo jedn¹ cyfrê.
+Uwaga: Gdy liczba jest jednocyfrowa metoda zwraca null;
+
+2. Metoda hultajchochla dzia³a w ten sposób, ¿e losowo zmienia wyst¹pienia dwóch cyfr w liczbie bêd¹cej argumentem.
+Uwaga Gdy liczba jest jednocyfrowa metoda wyrzuca NieduanyPsikusException
+
+3. Metoda niekszta³tek dzia³a w ten sposób, ¿e w zadanej liczbie dokonuje jednej losowej zmiany cyfr wg podanego schematu:
+    3 -> 8
+    7 -> 1
+    6 -> 9
+Uwaga: cyfry 3, 7, 6 mog¹ nie wystêpowaæ w liczbie bêd¹cej argumentem, metoda zwraca wówczas swój argument.
+
+Uwagi ogólne:   
+1. Przy rozwi¹zaniu zadania spróbowaæ podejœcia Test Driven Development tj. najpierw spróbowaæ napisaæ kod samych testów a poŸniej w³aœciw¹ impelementacjê metod. Zazwyczaj takie podejœcie bardzo pomaga w implementacji.
+
+2. Zastosowaæ wywo³ania paramteryczne, utworzyæ suite, skorzystaæ z matchers (JUnit wraz z bibliotek¹ Hamcrest)
+
+3. Zwróciæ uwagê i odpowiednio przetestowaæ przypadki brzegowe - tj. wyrzucane wyj¹tki lub zwaracane wartoœci null 
+
+
+Asercje
+https://github.com/junit-team/junit/wiki/Assertions
+
+Testowanie wyj¹tków
+https://github.com/junit-team/junit/wiki/Exception-testing
+ 
+Agregowanie testów (JUnit Suites)
+https://github.com/junit-team/junit/wiki/Aggregating-tests-in-suites 
+
+Matchers
+https://github.com/junit-team/junit/wiki/Matchers-and-assertthat
+
+Testy z parametrami
+https://github.com/junit-team/junit/wiki/Parameterized-tests
+
+Testowanie czasu wykonania
+https://github.com/junit-team/junit/wiki/Timeout-for-tests 

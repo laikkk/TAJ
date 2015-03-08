@@ -1,0 +1,40 @@
+Zad. 1a. Napisz klasê Calculator, która bêdzie dostarcza³a piêæ publicznych metod
+int add(int a, int b)
+int sub(int a, int b)
+int multi(int a, in b)
+int div(int a, int b)  (dzielenie ca³kowitoliczbowe)
+boolean greater(int a, int b)
+
+Napisz klasê CalculatorTest, która bêdzie klas¹ testuj¹c¹ dla klasy Calculator.
+Zaplanuj i zaimplementuj odpowiednie przypadki testowe (sprawdzaj¹ce poprawnoœæ
+wykonywanych operacji). Skorzystaj z ró¿nych asercji.
+
+Zad. 1b. Rozszerz klasê CalculatorTest o przypadek testowy, który zakoñczy siê
+b³êdem, gdy przy próbie dzielenia przez 0 nie wyst¹pi wyj¹tek typu ArithmeticException.
+
+Zad. 2. Napisz klasê Calculator, która bêdzie dzia³a³a analogicznie do tej z zadania 1, ale bêdzie wykonywa³a operacje na liczbach typu double. Napisz klasê 
+CalculatorTest (zwróæ uwagê na mo¿liwe b³êdy w zaokr¹gleniach, jak sobie z tym poradziæ?).
+
+Zad. 3. Napisz klasê LiczbaRzymska, która bêdzie posiada³a jedno prywatne pole zawieraj¹ce liczbê (zainicjalizowane w konstruktorze) i metodê toString(), która
+bêdzie zwraca³a tê sam¹ liczbê zapisan¹ w rzymskim systemie zapisywania liczb.
+
+Przed implementacj¹ metody toString() zastanów siê jak powinna zachowaæ siê ta klasa w ró¿nych przypadkach np. gdy w konstruktorze podano liczbê ujemn¹. Zaimplementuj klasê testuj¹c¹ i odpowiednie przypadki testowe. W tym momencie testy oczywiœcie zakoñcz¹ siê niepowodzeniem. Zaimplementuj metodê toString() i uruchom ponownie testy.
+
+
+Asercje
+https://github.com/junit-team/junit/wiki/Assertions
+
+Testowanie wyj¹tków
+https://github.com/junit-team/junit/wiki/Exception-testing
+ 
+Agregowanie testów (JUnit Suites)
+https://github.com/junit-team/junit/wiki/Aggregating-tests-in-suites 
+
+Matchers
+https://github.com/junit-team/junit/wiki/Matchers-and-assertthat
+
+Testy z parametrami
+https://github.com/junit-team/junit/wiki/Parameterized-tests
+
+Testowanie czasu wykonania
+https://github.com/junit-team/junit/wiki/Timeout-for-tests 
