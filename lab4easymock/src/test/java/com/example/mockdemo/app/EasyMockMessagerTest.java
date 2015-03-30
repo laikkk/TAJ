@@ -84,10 +84,10 @@ public class EasyMockMessagerTest {
 	@Test
 	public void sendMessage_WhenGivenServerContainsdotPLandProperLengthOfMessage_Return0()
 			throws MalformedRecipientException {
-		expect(messageServiceMock.send("asdf", "asd")).andReturn(
-				SendingStatus.SENDING_ERROR).atLeastOnce();
+		expect(messageServiceMock.send("wp.pl", "asd")).andReturn(
+				SendingStatus.SENT).atLeastOnce();
 		replay(messageServiceMock);
-		assertThat(messenger.sendMessage("asdf", "asd"), equalTo(1));
+		assertThat(messenger.sendMessage("wp.pl", "asd"), equalTo(0));
 		verify(messageServiceMock);
 	}
 }
