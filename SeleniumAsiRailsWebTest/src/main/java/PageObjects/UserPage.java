@@ -1,0 +1,24 @@
+package PageObjects;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class UserPage {
+
+	WebDriver driver;
+	
+	@FindBy(xpath=".//*[@id='Wraper']/div/div/form/div[2]/div/p")
+	WebElement emailParagraph;
+	
+ public UserPage(WebDriver driver) {
+	 this.driver = driver;
+	 PageFactory.initElements(driver, this);
+  }
+	
+	public boolean isEmailIsDisplayed(String goodUserEmail) {
+		return emailParagraph.getText().contains(goodUserEmail);
+	}
+
+}
