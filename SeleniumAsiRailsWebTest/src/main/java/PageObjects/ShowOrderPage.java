@@ -4,10 +4,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ShowOrderPage {
 	WebDriver driver;
-
+	WebDriverWait wait;
+	
 	@FindBy(className = "alert")
 	WebElement alertDiv;
 
@@ -26,6 +29,7 @@ public class ShowOrderPage {
 	public ShowOrderPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
+		isLoadedConditions();
 	}
 	
 	public boolean isDetailsArePresent(String description,String maxBudget,String contactNumber, String contactEmail)
@@ -36,4 +40,8 @@ public class ShowOrderPage {
 				&& contactEmailParagraph.getText().contains(contactEmail);
 	}
 
+	 private void isLoadedConditions(){
+		 wait = new WebDriverWait(driver, 5);
+			wait.until(ExpectedConditions.elementToBeClickable(descriptionParagraph));
+	 }
 }
