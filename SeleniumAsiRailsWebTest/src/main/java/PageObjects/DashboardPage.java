@@ -1,4 +1,4 @@
-package PageObjects;
+package pageObjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,9 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class DashboardPage {
-	WebDriver driver;
-	WebDriverWait wait;
+import common.PageBase;
+
+public class DashboardPage extends PageBase {
 	
 	@FindBy(className = "glyphicon-user")
 	WebElement userLink;
@@ -24,8 +24,7 @@ public class DashboardPage {
 	WebElement addNewOrderLink;
 
 	public DashboardPage(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
+		super(driver);
 	}
 
 	public boolean isDashboardLoaded() {
@@ -56,5 +55,10 @@ public class DashboardPage {
 		wait.until(ExpectedConditions.elementToBeClickable(allOrdersLink));
 		allOrdersLink.click();
 		return PageFactory.initElements(driver, AllOrdersPage.class);
+	}
+
+	@Override
+	public Boolean isLoadedCondition() {
+		return userLink.isDisplayed();
 	}
 }

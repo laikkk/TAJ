@@ -1,16 +1,14 @@
-package PageObjects;
+package pageObjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ShowOrderPage {
-	WebDriver driver;
-	WebDriverWait wait;
-	
+import common.PageBase;
+
+public class ShowOrderPage extends PageBase {
 	@FindBy(className = "alert")
 	WebElement alertDiv;
 
@@ -27,8 +25,7 @@ public class ShowOrderPage {
 	WebElement contactEmailParagraph;
 
 	public ShowOrderPage(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
+		super(driver);
 		isLoadedConditions();
 	}
 	
@@ -41,7 +38,13 @@ public class ShowOrderPage {
 	}
 
 	 private void isLoadedConditions(){
-		 wait = new WebDriverWait(driver, 5);
-			wait.until(ExpectedConditions.elementToBeClickable(descriptionParagraph));
+		 
 	 }
+
+	@Override
+	public Boolean isLoadedCondition() {
+		wait = new WebDriverWait(driver, 5);
+		return wait.until(ExpectedConditions.elementToBeClickable(descriptionParagraph))
+				.isDisplayed();
+	}
 }

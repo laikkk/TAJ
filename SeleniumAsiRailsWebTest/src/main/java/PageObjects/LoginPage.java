@@ -1,12 +1,15 @@
-package PageObjects;
+package pageObjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class LoginPage {
-	WebDriver driver;
+import common.PageBase;
+
+public class LoginPage extends PageBase {
 	@FindBy(id="session_email")
 	WebElement emailInput;
 	
@@ -14,17 +17,20 @@ public class LoginPage {
 	WebElement passwordInput;
 	
 	@FindBy(className="alert-danger")
+	@CacheLookup
 	WebElement alertDiv;
 	
 	@FindBy(className="row")
+	@CacheLookup
 	WebElement loginRow;
 	
 	String pleaseLogInMsg = "Please log in.";
 	String invalidCredsMsg = "Invalid email/password combination";
 	
 	public LoginPage(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
+		super(driver);
+		// Sometime we want to check if page is loaded before we will using it
+		isLoadedCondition();
 	}
 	
 	public void TryLogiInAs(String email, String password)
@@ -52,6 +58,13 @@ public class LoginPage {
 
 	public boolean isLoginPageDisplayed() {
 		return loginRow.getText().contains("Log in");
+	}
+
+	@Override
+	public Boolean isLoadedCondition() {
+		 wait = new WebDriverWait(driver, 5);
+			wait.until(ExpectedConditions.elementToBeClickable(emailInput));
+		return emailInput.isDisplayed();
 	}
 }
 

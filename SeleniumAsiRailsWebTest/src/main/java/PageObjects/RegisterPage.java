@@ -1,12 +1,13 @@
-package PageObjects;
+package pageObjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class RegisterPage {
-	WebDriver driver;
+import common.PageBase;
+
+public class RegisterPage extends PageBase {
 	@FindBy(id="user_name")
 	WebElement userNameInput;
 	
@@ -23,8 +24,7 @@ public class RegisterPage {
 	WebElement userConfirmPasswordInput;
 	
 	public RegisterPage(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
+		super(driver);
 	}
 	
 	public void tryRegister(String userName,String userEmail, String userPassword,  String confirmPassword){
@@ -43,5 +43,11 @@ public class RegisterPage {
 	public boolean isAlertWithErrorsDisplayed(String messageOne, String messageTwo) {
 		String alertText = alertDiv.getText();
 		return alertText.contains(messageOne) && alertText.contains(messageTwo);
+	}
+
+	@Override
+	public Boolean isLoadedCondition() {
+		// used implicitly Wait
+		return userNameInput.isDisplayed();
 	}
 }
