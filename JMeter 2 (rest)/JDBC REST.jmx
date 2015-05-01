@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.8" jmeter="2.13 r1665067">
+  <hashTree>
+    <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Fetch last previously inserted Person" enabled="true">
+      <stringProp name="dataSource">MyConn</stringProp>
+      <stringProp name="query">SELECT * FROM &quot;PUBLIC&quot;.&quot;PERSON&quot; WHERE ID = ${fetchedID}</stringProp>
+      <stringProp name="queryArguments"></stringProp>
+      <stringProp name="queryArgumentsTypes"></stringProp>
+      <stringProp name="queryTimeout"></stringProp>
+      <stringProp name="queryType">Prepared Select Statement</stringProp>
+      <stringProp name="resultSetHandler">Store as Object</stringProp>
+      <stringProp name="resultVariable">queryResponse</stringProp>
+      <stringProp name="variableNames"></stringProp>
+    </JDBCSampler>
+    <hashTree>
+      <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+        <stringProp name="BeanShellAssertion.query">ArrayList result = vars.getObject(&quot;queryResponse&quot;);
+Long id;
+String name =&quot;&quot;;
+String yob=&quot;&quot;;
+
+for (HashMap table : result) {
+    for (Object column : table.keySet()) {
+        log.error(column + &quot;=&quot; + table.get(column));
+        if(column.equals(&quot;ID&quot;)){       	
+        	id = table.get(column);
+        	}
+        else if(column.equals(&quot;NAME&quot;)){       	
+        	name = table.get(column);
+        	}
+        	else if(column.equals(&quot;YOB&quot;)){       	
+        	yob = table.get(column).toString();
+        	}
+    }
+}
+	
+if(!vars.getObject(&quot;fetchedID&quot;).equals(id.toString())){
+	log.info(&quot;!!!!!!!!!!!!!!FAIL!!!!!!!!!!!!!!!&quot;);
+	Failure = true;
+	FailureMessage = &quot;Ids are not this same fetchedID=&apos;&quot;+vars.getObject(&quot;fetchedID&quot;)+&quot;&apos; id=&apos;&quot;+id.toString()+&quot;&apos;&quot;;
+}
+if(!vars.getObject(&quot;randomName&quot;).equals(name)){
+	log.info(&quot;!!!!!!!!!!!!!!FAIL!!!!!!!!!!!!!!!&quot;);
+	Failure = true;
+	FailureMessage = &quot;Names are not this same randomName=&apos;&quot;+vars.getObject(&quot;randomName&quot;)+&quot;&apos; id=&apos;&quot;+name+&quot;&apos;&quot;;
+}
+if(!vars.getObject(&quot;randomYOB&quot;).equals(yob)){
+	log.info(&quot;!!!!!!!!!!!!!!FAIL!!!!!!!!!!!!!!!&quot;);
+	Failure = true;
+	FailureMessage = &quot;Yobs are not this same randomYOB=&apos;&quot;+vars.getObject(&quot;randomYOB&quot;)+&quot;&apos; id=&apos;&quot;+yob+&quot;&apos;&quot;;
+}
+
+</stringProp>
+        <stringProp name="BeanShellAssertion.filename"></stringProp>
+        <stringProp name="BeanShellAssertion.parameters"></stringProp>
+        <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+      </BeanShellAssertion>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
