@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <CAR Make="BMW" Model="X5" YOP="2010"/>
+  <CAR Make="Ford" Model="Mondeo" YOP="1999"/>
+  <CAR Make="Mercedes" Model="Klasa A" YOP="2007"/>
+  <CAR Make="Opel" Model="Corsa" YOP="2005"/>
+</dataset>

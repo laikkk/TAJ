@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <PERSON ID="0" NAME="Bolek" YOB="1972"/>
+  <PERSON ID="1" NAME="Lolek" YOB="1972"/>
+  <PERSON ID="2" NAME="Tola" YOB="1975"/>
+  
+  <CAR ID="0" Make="BMW" Model="X5" YOP="2010"/>
+  <CAR ID="1" Make="Ford" Model="Mondeo" YOP="1999"/>
+  <CAR ID="2" Make="Mercedes" Model="Klasa A" YOP="2007"/>
+  
+  <PERSONS_CARS ID="0" PERSON_ID="0" CAR_ID="0"/>
+</dataset>
