@@ -48,12 +48,11 @@ public class PersonRESTService {
 	@Produces("application/json")
 	public Person getPersonWithCar(@PathParam("personId") Long id) {
 		List<Car> cars = new ArrayList<Car>();
-		cars.add(new Car(1, "test1", "test2", 2003));
-		cars.add(new Car(2, "test1", "test2", 2003));
+		cars.add(new Car(1, "Opel", "Astra", 2013));
+		cars.add(new Car(2, "Porshe", "911", 2016));
 		Person pa = new Person(3, "kacper", 2013);
 		pa.setCars(cars);
 		pm.addPerson(pa);
-		//Person p = pm.getPerson(id);
 		return pa;
 	}
 
@@ -67,7 +66,6 @@ public class PersonRESTService {
 		Person pa = new Person(3, "kacper", 2013);
 		pa.setCars(cars);
 		pm.addPerson(pa);
-		//Person p = pm.getPerson(id);
 		return pa;
 	}
 
