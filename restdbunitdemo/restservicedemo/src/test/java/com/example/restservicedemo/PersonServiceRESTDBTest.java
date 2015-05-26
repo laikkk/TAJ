@@ -13,6 +13,7 @@ import org.dbunit.IDatabaseTester;
 import org.dbunit.JdbcDatabaseTester;
 import org.dbunit.database.DatabaseConnection;
 import org.dbunit.database.IDatabaseConnection;
+import org.dbunit.dataset.DataSetException;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.ITable;
 import org.dbunit.dataset.filter.DefaultColumnFilter;
@@ -146,7 +147,7 @@ public class PersonServiceRESTDBTest {
 	}
 	
 	@Test
-	public void addCarToPersonByObj(){
+	public void addCarToPersonByObj() throws Exception{
 		Car aCar = get("/cars/2").as(Car.class);
 		Person aPerson = get("/persons/2").as(Person.class);
 		PersonCar personCar = new PersonCar(aPerson,aCar);
@@ -164,6 +165,17 @@ public class PersonServiceRESTDBTest {
 			assertThat().
 			statusCode(201).
 			header("Content-Type", "application/json");
+		
+		dbDataSet = connection.createDataSet();
+		actualTable = dbDataSet.getTable("PERSONS_CARS");
+		filteredTable = DefaultColumnFilter.excludedColumnsTable(
+				actualTable, new String[] { "ID" });
+
+		expectedDataSet = new FlatXmlDataSetBuilder().build(new File(
+				pathToExpectedPersonsCarsDBXMLFile));
+		expectedTable = expectedDataSet.getTable("PERSONS_CARS");
+
+		Assertion.assertEquals(expectedTable, filteredTable);
 	}
 
 	@After

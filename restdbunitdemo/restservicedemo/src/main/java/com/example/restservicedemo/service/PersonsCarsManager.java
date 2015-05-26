@@ -112,12 +112,13 @@ public class PersonsCarsManager {
 	}
 	
 	public Person getPerson(Long id) {
-		Person p = new Person();
+		Person p =null;
 		try {
 			getPersonByIdStmt.setLong(1, id);
 			ResultSet rs = getPersonByIdStmt.executeQuery();
 
 			while (rs.next()) {
+				p =new Person();
 				p.setId(rs.getInt("id"));
 				p.setFirstName(rs.getString("name"));
 				p.setYob(rs.getInt("yob"));
@@ -153,13 +154,14 @@ public class PersonsCarsManager {
 	
 	// CARS methods
 	public Car getCar(Long id) {
-		Car c = new Car();
+		Car c =null;
 		
 		try {
 			getCarByIdStmt.setLong(1, id);
 			ResultSet rs = getCarByIdStmt.executeQuery();
 
 			while (rs.next()) {
+				c = new Car();
 				c.setId(rs.getInt("id"));
 				c.setMake(rs.getString("make"));
 				c.setModel(rs.getString("model"));
@@ -189,7 +191,13 @@ public class PersonsCarsManager {
 	}
 	
 	// PERSONS_CARS methods
-	public int addCarToPersonByIds(Long carId, Long personId) {		
+	public int addCarToPersonByIds(Long carId, Long personId) {	
+		Car car = getCar(carId);
+		Person person = getPerson(personId);
+		
+		if(car == null || person == null)
+			throw new NullPointerException();
+		
 		int count = 0;
 		try {
 			addCarToPersonStmt.setLong(1, personId);
