@@ -1,0 +1,5 @@
+restdbunitdemo/restservicedemo/restdemo.log
+restdbunitdemo/restservicedemo/target/classes/com/example/restservicedemo/service/PersonsCarsManager.class
+restdbunitdemo/restservicedemo/target/surefire-reports/com.example.restservicedemo.PersonServiceRESTDBTest.txt
+restdbunitdemo/restservicedemo/target/surefire-reports/TEST-com.example.restservicedemo.PersonServiceRESTDBTest.xml
+restdbunitdemo/restservicedemo/target/test-classes/com/example/restservicedemo/PersonServiceRESTDBTest.class
