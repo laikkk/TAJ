@@ -1,35 +1,34 @@
 <html>
 <head>
-<title>BeforeStories</title>
+<title>com.example.webguidemo.mygarage_web_test</title>
 <style type="text/css" media="all">
 @import url( "./style/jbehave-core.css" );
 </style>
 </head>
 <body>
-  
-<script type="syntaxhighlighter" class="brush: plain"><![CDATA[
-#org.jbehave.core.reporters.PostStoryStatisticsCollector
-#Tue May 26 21:28:03 CEST 2015
-notAllowed=0
-examples=0
-scenariosNotAllowed=0
-pending=0
-stepsPending=0
-scenariosSuccessful=0
-stepsNotPerformed=0
-givenStoryScenarios=0
-givenStoryScenariosFailed=0
-stepsFailed=0
-scenarios=0
-givenStories=0
-stepsSuccessful=0
-steps=0
-givenStoryScenariosPending=0
-scenariosPending=0
-stepsIgnorable=0
-givenStoryScenariosNotAllowed=0
-scenariosFailed=0
-givenStoryScenariosSuccessful=0
+ 
+<script type="syntaxhighlighter" class="brush: txt"><![CDATA[
+
+(com/example/webguidemo/mygarage_web_test.story)
+Scenario: User searches for a single step
+Given user is on Home page
+When click on Enter to Garage button
+Then Login page appear
+Given user is on Home page
+When click on Enter to Garage button
+When login as test@test.pl 123456
+Then alertbox contains Invalid
+Given user is on Home page
+When click on Enter to Garage button
+When click on register link
+Then Register page appear
+Given user is on Home page
+When click on Enter to Garage button
+When click on register link
+When register as test test@test.pl haslo haslo
+Then register alertbox contains UserName
+
+
 
 ]]></script>
 </body>

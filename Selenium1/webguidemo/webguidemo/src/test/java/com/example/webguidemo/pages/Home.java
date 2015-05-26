@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.jbehave.web.selenium.WebDriverPage;
 import org.jbehave.web.selenium.WebDriverProvider;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -23,6 +24,7 @@ public class Home extends WebDriverPage {
 	}
 	
 	public void openLoginPage(){
+		signIn = findElement(By.id("loginregisterToGarage"));
 		signIn.click();
 	}
 }

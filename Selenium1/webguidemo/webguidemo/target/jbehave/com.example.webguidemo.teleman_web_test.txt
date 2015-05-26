@@ -2,7 +2,11 @@
 (com/example/webguidemo/teleman_web_test.story)
 Scenario: User searches for a single step
 Given user is on Home page
-When user opens Sport link
-Then Sport page is shown
+When click on Enter to Garage button
+Then Login page appear
+Given user is on Home page
+When click on Enter to Garage button
+When login as test@test.pl 123456
+Then alertbox contains Invalid
 
 

@@ -2,7 +2,8 @@ package com.example.webguidemo;
 
 import org.jbehave.web.selenium.WebDriverProvider;
 
-import com.example.webguidemo.pages.Sport;
+import com.example.webguidemo.pages.Login;
+import com.example.webguidemo.pages.Register;
 import com.example.webguidemo.pages.Home;
 
 public class Pages {
@@ -11,7 +12,8 @@ public class Pages {
 	
 	//Pages
 	private Home home;
-	private Sport sport;
+	private Login login;
+	private Register register;
 	// ...
 
 	public Pages(WebDriverProvider driverProvider) {
@@ -26,10 +28,17 @@ public class Pages {
 		return home;
 	}
 	
-	public Sport sport(){
-		if (sport == null) {
-			sport = new Sport(driverProvider);
+	public Login login() {
+		if (login == null) {
+			login = new Login(driverProvider);
 		}
-		return sport;
+		return login;
+	}
+	
+	public Register register(){
+		if (register == null) {
+			register = new Register(driverProvider);
+		}
+		return register;
 	}
 }

@@ -27,7 +27,7 @@ import org.jbehave.web.selenium.WebDriverScreenshotOnFailure;
 import org.jbehave.web.selenium.WebDriverSteps;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class TelemanWebTest extends JUnitStories {
+public class MyGarageWebTest extends JUnitStories {
 	
 	private WebDriverProvider driverProvider = new TypeWebDriverProvider(ChromeDriver.class);
     private WebDriverSteps lifecycleSteps = new PerStoryWebDriverSteps(driverProvider); // or PerStoryWebDriverSteps(driverProvider)
@@ -35,7 +35,7 @@ public class TelemanWebTest extends JUnitStories {
     private SeleniumContext context = new SeleniumContext();
     private ContextView contextView = new LocalFrameContextView().sized(500, 100);
 
-    public TelemanWebTest() {
+    public MyGarageWebTest() {
     	System.setProperty("webdriver.chrome.driver", "c:\\tmp\\chromedriver.exe");
 	}
 
@@ -57,7 +57,7 @@ public class TelemanWebTest extends JUnitStories {
     public InjectableStepsFactory stepsFactory() {
         Configuration configuration = configuration();
         return new InstanceStepsFactory(configuration, 
-                new TelemanSteps(pages),
+                new MyGarageSteps(pages),
                 lifecycleSteps,
                 new WebDriverScreenshotOnFailure(driverProvider, configuration.storyReporterBuilder()));
     }
